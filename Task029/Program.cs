@@ -1,37 +1,37 @@
 ﻿// Задача 29
 // Напишите программу, которая задаёт массив из 8 случайных целых чисел и выводит отсортированный по модулю массив.
 
-void FillArray(int[] array, int border)
+void FillArray(int[] numbers, int border)
 {
     Random random = new Random();
-    for (int i = 0; i < array.Length; i++)
+    for (int i = 0; i < numbers.Length; i++)
     {
-        array[i] = random.Next(-border, border);
+        numbers[i] = random.Next(-border, border);
     }
 }
 
-void SortArray(int[] array)
+void SortArray(int[] numbers)
 {
-    for (int i = 0; i < array.Length; i++)
+    for (int i = 0; i < numbers.Length; i++)
     {
-        int min = array[i];
-        for (int j = i + 1; j < array.Length; j++)
+        int min = numbers[i];
+        for (int j = i + 1; j < numbers.Length; j++)
         {
-            if (Math.Abs(min) > Math.Abs(array[j]))
+            if (Math.Abs(min) > Math.Abs(numbers[j]))
             {
-                array[i] = array[j];
-                array[j] = min;
-                min = array[i];
+                numbers[i] = numbers[j];
+                numbers[j] = min;
+                min = numbers[i];
             }
         }
     }
 }
 
 int size = 8, border = 100;
-int[] array = new int[size];
+int[] numbers = new int[size];
 
-FillArray(array, border);
-Console.WriteLine($"Сгенерированный массив: [{String.Join(", ", array)}]");
+FillArray(numbers, border);
+Console.WriteLine($"Сгенерированный массив: [{String.Join(", ", numbers)}]");
 
-SortArray(array);
-Console.WriteLine($"Отсортированный массив: [{String.Join(", ", array)}]");
+SortArray(numbers);
+Console.WriteLine($"Отсортированный массив: [{String.Join(", ", numbers)}]");
